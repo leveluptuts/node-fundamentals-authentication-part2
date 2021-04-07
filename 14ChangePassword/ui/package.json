@@ -1,0 +1,17 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scott Tolinski",
+  "license": "ISC",
+  "dependencies": {
+    "cross-fetch": "^3.1.1",
+    "fastify": "^3.14.0",
+    "fastify-static": "^4.0.1"
+  }
+}

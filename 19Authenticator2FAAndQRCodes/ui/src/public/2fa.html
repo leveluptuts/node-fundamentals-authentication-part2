@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <script src="https://unpkg.com/@otplib/preset-browser@^12.0.0/buffer.js"></script>
+    <script src="https://unpkg.com/@otplib/preset-browser@^12.0.0/index.js"></script>
+  </head>
+  <body>
+    <h2>2FA</h2>
+    <div id="qr"></div>
+    <script>
+      ;(async () => {
+        const { otplib, QRCode } = window
+        const secret = otplib.authenticator.generateSecret()
+        const otpauth = otplib.authenticator.keyuri(
+          "scott@leveluptuts.com",
+          "Level Up Auth",
+          secret
+        )
+        const imageURL = await QRCode.toDataURL(otpauth)
+
+        const qrWrapper = document.getElementById("qr")
+        const qr = document.createElement("img")
+        qr.src = imageURL
+        qrWrapper.appendChild(qr)
+      })()
+    </script>
+  </body>
+</html>
